@@ -1,0 +1,9 @@
+name: Sync Branch on Push
+
+on: [Push]
+
+jobs:
+  build:
+    runs-on: ubunto-latest
+    steps:
+      run: echo "Hello world"
