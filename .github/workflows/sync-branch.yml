@@ -7,21 +7,32 @@ on:
 
 permissions:
   contents: write
+  packages: write # ถ้าจะ push docker ไป ghcr
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Force sync siteA and siteB with main
-        run: |
-          git push origin main:main-site-A --force && git push origin main:main-site-B --force
-      - name Run Dockerfile
-        run: |
-          docker build -t node_builder:1.0.0 .
-      - name Dialog Message
-        run: |
-          echo "Docker build Success!"
+
+      - name: Sync site A
+        run: git push origin main:main-site-A --force
+
+      - name: Sync site B
+        run: git push origin main:main-site-B --force
+
+      - name: Build Docker Image
+        run: docker build -t ghcr.io/${{ github.repository }}:latest .
+
+      - name: Login to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push Docker Image
+        run: docker push ghcr.io/${{ github.repository }}:latest
+
+      - name: Dialog Message
+        run: echo "Docker build and push success!"
