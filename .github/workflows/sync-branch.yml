@@ -35,4 +35,4 @@ jobs:
         run: docker push ghcr.io/${{ github.repository }}:latest
 
       - name: Dialog Message
-        run: echo "Docker build and push success!"
+        run: echo "Docker build and push success! 💖"
