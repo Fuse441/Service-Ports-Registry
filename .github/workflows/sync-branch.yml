@@ -21,4 +21,7 @@ jobs:
           git push origin main:main-site-A --force && git push origin main:main-site-B --force
       - name Run Dockerfile
         run: |
-          docker build -t node_builder:1.0.0 . && echo "Build Node Succes!"
+          docker build -t node_builder:1.0.0 .
+      - name Dialog Message
+        run: |
+          echo "Docker build Success!"
