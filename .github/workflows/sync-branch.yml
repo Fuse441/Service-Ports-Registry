@@ -16,6 +16,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Force sync siteB with main
+      - name: Force sync siteA and siteB with main
         run: |
-          git push origin main:main-site-B --force
+          git push origin main:main-site-A --force && git push origin main:main-site-B --force
