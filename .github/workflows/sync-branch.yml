@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      - name: Fetch all branch
+        run: git fetch --all
       - name: Check branch
         run: git branch --all
