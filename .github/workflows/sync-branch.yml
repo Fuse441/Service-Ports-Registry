@@ -13,3 +13,7 @@ jobs:
         run: git fetch --all
       - name: Check branch
         run: git branch --all
+      - name: Checkout Origin/main-site-A
+        run: git checkout origin/main-site-A
+      - name: Sync to origin/main-site-A
+        run: git merge origin/main
