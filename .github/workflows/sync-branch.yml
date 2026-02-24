@@ -16,4 +16,4 @@ jobs:
 
       - name: Force sync siteB with main
         run: |
-          git push origin main:siteB --force
+          git push origin main:main-site-B --force
