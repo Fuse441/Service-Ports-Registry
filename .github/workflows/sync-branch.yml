@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-
+permission: content:write
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -13,7 +13,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Force sync siteB with main
         run: |
           git push origin main:main-site-B --force
