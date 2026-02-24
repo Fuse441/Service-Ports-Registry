@@ -1,9 +1,10 @@
 name: Sync Branch on Push
 
-on: [Push]
+on: [push]
 
 jobs:
   build:
     runs-on: ubunto-latest
     steps:
-      run: echo "Hello world"
+      - name: Say Hello
+        run: echo "Hello world"
