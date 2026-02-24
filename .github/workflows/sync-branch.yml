@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-permission: content:write
+permissions: content:write
 jobs:
   sync:
     runs-on: ubuntu-latest
