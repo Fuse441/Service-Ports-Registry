@@ -1,19 +1,19 @@
-name: Sync Branch on Push
+name: Sync Branch
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
-  build:
+  sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-      - name: Fetch all branch
-        run: git fetch --all
-      - name: Check branch
-        run: git branch --all
-      - name: Checkout Origin/main-site-A
-        run: git checkout origin/main-site-A
-      - name: Sync to origin/main-site-A
-        run: git merge origin/main
+        with:
+          fetch-depth: 0
+
+      - name: Force sync siteB with main
+        run: |
+          git push origin main:siteB --force
