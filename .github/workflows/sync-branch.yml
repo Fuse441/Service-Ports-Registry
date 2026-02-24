@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: write
-  packages: write # ถ้าจะ push docker ไป ghcr
+  packages: write #push GHCR github container registry
 
 jobs:
   sync:
