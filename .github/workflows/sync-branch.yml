@@ -35,7 +35,7 @@ jobs:
         run: docker build -t ghcr.io/${{ env.REPO_LC }}:latest .
 
       - name: Push Docker Image
-        run: docker push ghcr.io/${{ github.repository }}:latest
+        run: docker push ghcr.io/${{ env.REPO_LC }}:latest
 
       - name: Dialog Message
         run: echo "Docker build and push success! 💖"
